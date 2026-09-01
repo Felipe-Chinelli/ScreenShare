@@ -16,6 +16,13 @@
   <a href="#-modelo-de-negócio"><img src="https://img.shields.io/badge/Licença-MIT%20%2F%20Freemium-purple?style=flat-square" alt="Licença" /></a>
 </p>
 
+- Gabriel Jorge Coutinho RM565441
+- Bruna Marques e Queiroz RM565648
+- Pedro Henrique Lisboa RM565722
+- Felipe Rodrigues Ribeiro dos Santos RM565274
+- Manoela Oliveira Bello RM563952                                           
+- Miguel Lima da Silva  RM565141
+
 ---
 
 ## 📑 Tabela de Conteúdos
