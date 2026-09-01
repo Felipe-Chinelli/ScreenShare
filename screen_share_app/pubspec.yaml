@@ -1,0 +1,21 @@
+name: screen_share_app
+description: App de compartilhamento de tela multi-apresentador em Flutter Web, para uso via Radmin VPN.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+  flutter: '>=3.19.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_webrtc: ^0.11.7
+  web_socket_channel: ^3.0.3
+  uuid: ^4.4.0
+
+dev_dependencies:
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
