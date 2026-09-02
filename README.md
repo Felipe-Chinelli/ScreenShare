@@ -151,6 +151,8 @@ O **ScreenShare** ocupa a interseção perfeita: entrega **qualidade de estúdio
 
 ---
 
+# Figma
+
 ## 🎯 Telas 
 
 ### Tela 1
@@ -168,8 +170,25 @@ img src="<img width="1281" height="718" alt="Image" src="https://github.com/user
 img src="<img width="1183" height="666" alt="Image" src="https://github.com/user-attachments/assets/8beefeb1-701e-4dfe-9c22-005bf47f0f2f" />" width="0px" /
 </div>
 
-### Link Figma
+## Icons e fontes
+
+## Icons
+div align="center"
+img src="<img width="479" height="605" alt="Image" src="https://github.com/user-attachments/assets/931b20d2-300b-4229-b034-e95564e9ded3" />" width="0px" /
+/div
+
+## Fontes 
+div align="center"
+img src="<img width="556" height="422" alt="Image" src="https://github.com/user-attachments/assets/39509cf2-7b95-42d3-8e8f-0e3dfe26e609" />" width="0px" /
+/div
+
+## Links
+
+### Link Figma Prototipo
 - https://www.figma.com/proto/NbDta0fGI5vcVZpujemIHC/Sem-t%C3%ADtulo?node-id=1-1682&t=uuFx7jhHPtYVEs4o-1
+
+### Link Figma Projeto
+- https://www.figma.com/design/NbDta0fGI5vcVZpujemIHC/Sem-t%C3%ADtulo?node-id=1-1681&t=uuFx7jhHPtYVEs4o-1
 
 ---
 
