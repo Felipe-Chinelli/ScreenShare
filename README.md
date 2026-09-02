@@ -194,32 +194,26 @@ img src="<img width="556" height="422" alt="Image" src="https://github.com/user-
 
 ## 🚀 Como Executar o Projeto
 
-### Web Client (React + Vite + Express)
+### Web Client Flutter
 
-1. Clone o repositório e instale as dependências:
-   ```bash
-   npm install
-   ```
-2. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-3. Acesse `http://localhost:3000` no seu navegador.
-
-### Mobile & Desktop Client (Flutter)
-
-1. Acesse a pasta do aplicativo Flutter:
-   ```bash
-   cd flutter_app
-   ```
-2. Obtenha as dependências:
+1. Clone o repositório e instale as dependências na root do projeto:
    ```bash
    flutter pub get
    ```
-3. Execute no emulador, dispositivo físico ou desktop:
+2. Inicie o servidor de desenvolvimento na pasta server:
    ```bash
-   flutter run
+   cd server && dart pub get
    ```
+3. Volte a pasta sreen_share_app e de bild no projeto:
+   ```bash
+   flutter build web
+   ```
+4. Inicie o servidor de desenvolvimento na pasta server:
+   ```bash
+   dart run bin/server.dart 8080
+   ```
+   
+3. Acesse `http://localhost:8080` no seu navegador.
 
 ---
 
