@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 
+import '../utils/avatars.dart';
+
 class ParticipantTile extends StatefulWidget {
   final String name;
   final MediaStream? stream;
@@ -72,7 +74,11 @@ class _ParticipantTileState extends State<ParticipantTile> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.person, size: 40, color: Colors.white38),
+                    Image.asset(
+                      avatarFor(widget.name),
+                      height: 72,
+                      filterQuality: FilterQuality.medium,
+                    ),
                     const SizedBox(height: 8),
                     Text(widget.name, style: const TextStyle(color: Colors.white54)),
                   ],

@@ -25,17 +25,61 @@ class _Client {
 class RoomHub {
   final Map<String, Map<String, _Client>> _rooms = {};
 
+  // Histórico de chat por sala (só em memória). Some quando a sala esvazia.
+  final Map<String, List<Map<String, dynamic>>> _chatHistory = {};
+  static const int _maxHistory = 100;
+  static const int _maxChatLength = 2000;
+  int _chatSeq = 0;
+
   void join(String room, String id, String name, WebSocketChannel channel) {
     final r = _rooms.putIfAbsent(room, () => {});
 
     final existing = r.values.map((c) => {'id': c.id, 'name': c.name}).toList();
     channel.sink.add(jsonEncode({'type': 'peers', 'peers': existing}));
 
+    final history = _chatHistory[room];
+    if (history != null && history.isNotEmpty) {
+      channel.sink.add(jsonEncode({'type': 'chat-history', 'messages': history}));
+    }
+
     for (final c in r.values) {
       c.channel.sink.add(jsonEncode({'type': 'peer-joined', 'id': id, 'name': name}));
     }
 
     r[id] = _Client(id: id, name: name, channel: channel);
+  }
+
+  /// Recebe uma mensagem de chat, carimba remetente/horário (o remetente é
+  /// sempre o dono da conexão, nunca um id enviado pelo cliente) e envia
+  /// para todos da sala, inclusive quem enviou.
+  void chat(String room, String fromId, String text) {
+    final r = _rooms[room];
+    final sender = r?[fromId];
+    if (r == null || sender == null) return;
+
+    final trimmed = text.trim();
+    if (trimmed.isEmpty) return;
+    final clipped =
+        trimmed.length > _maxChatLength ? trimmed.substring(0, _maxChatLength) : trimmed;
+
+    final now = DateTime.now();
+    final message = <String, dynamic>{
+      'type': 'chat',
+      'id': '${now.microsecondsSinceEpoch}-${_chatSeq++}',
+      'from': fromId,
+      'name': sender.name,
+      'text': clipped,
+      'ts': now.millisecondsSinceEpoch,
+    };
+
+    final history = _chatHistory.putIfAbsent(room, () => []);
+    history.add(message);
+    if (history.length > _maxHistory) history.removeAt(0);
+
+    final encoded = jsonEncode(message);
+    for (final c in r.values) {
+      c.channel.sink.add(encoded);
+    }
   }
 
   void relay(String room, String toId, Map<String, dynamic> msg) {
@@ -49,7 +93,10 @@ class RoomHub {
     for (final c in r.values) {
       c.channel.sink.add(jsonEncode({'type': 'peer-left', 'id': id}));
     }
-    if (r.isEmpty) _rooms.remove(room);
+    if (r.isEmpty) {
+      _rooms.remove(room);
+      _chatHistory.remove(room);
+    }
   }
 }
 
@@ -72,6 +119,11 @@ Future<void> main(List<String> args) async {
               myId = msg['id'] as String;
               hub.join(myRoom!, myId!, msg['name'] as String, webSocket);
               stdout.writeln('[+] "${msg['name']}" entrou na sala "$myRoom"');
+              break;
+            case 'chat':
+              if (myRoom != null && myId != null) {
+                hub.chat(myRoom!, myId!, (msg['text'] as String?) ?? '');
+              }
               break;
             case 'offer':
             case 'answer':

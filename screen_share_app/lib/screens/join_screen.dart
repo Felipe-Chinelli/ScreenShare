@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/room_manager.dart';
+import 'loading_screen.dart';
 import 'room_screen.dart';
 
 class JoinScreen extends StatefulWidget {
@@ -37,20 +38,33 @@ class _JoinScreenState extends State<JoinScreen> {
     final serverUrl = 'ws://${_ipController.text.trim()}:${_portController.text.trim()}/ws';
     final manager = RoomManager();
 
-    try {
-      await manager.join(
-        serverUrl: serverUrl,
-        name: _nameController.text.trim(),
-        room: _roomController.text.trim(),
-      );
-      if (!mounted) return;
+    // A conexão acontece dentro da tela de loading (GIF + nome do app).
+    // Ela volta com null em caso de sucesso, ou com a mensagem de erro.
+    final error = await Navigator.of(context).push<String?>(
+      PageRouteBuilder<String?>(
+        transitionDuration: const Duration(milliseconds: 300),
+        pageBuilder: (_, __, ___) => LoadingScreen(
+          task: () => manager.join(
+            serverUrl: serverUrl,
+            name: _nameController.text.trim(),
+            room: _roomController.text.trim(),
+          ),
+        ),
+        transitionsBuilder: (_, animation, __, child) =>
+            FadeTransition(opacity: animation, child: child),
+      ),
+    );
+
+    if (!mounted) return;
+    setState(() {
+      _connecting = false;
+      _error = error;
+    });
+
+    if (error == null) {
       Navigator.of(context).push(
         MaterialPageRoute(builder: (_) => RoomScreen(manager: manager)),
       );
-    } catch (e) {
-      setState(() => _error = 'Não foi possível conectar: $e');
-    } finally {
-      if (mounted) setState(() => _connecting = false);
     }
   }
 
@@ -68,7 +82,11 @@ class _JoinScreenState extends State<JoinScreen> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  const Icon(Icons.screen_share, size: 56),
+                  Image.asset(
+                    'assets/images/logo.png',
+                    height: 96,
+                    filterQuality: FilterQuality.medium,
+                  ),
                   const SizedBox(height: 8),
                   Text(
                     'Compartilhamento de Tela',

@@ -19,3 +19,8 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/gato_loading.gif
+    - assets/images/logo.png
+    - assets/images/avatars/

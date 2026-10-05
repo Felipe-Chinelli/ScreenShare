@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_webrtc/flutter_webrtc.dart';
 import 'package:uuid/uuid.dart';
 
+import '../models/chat_message.dart';
 import '../models/peer.dart';
 import 'signaling_service.dart';
 
@@ -32,6 +33,13 @@ class RoomManager extends ChangeNotifier {
   bool get isSharingMic => localMicStream != null;
 
   String status = 'desconectado';
+  bool get isConnected => status == 'conectado';
+
+  // ---------- Chat de texto ----------
+  final List<ChatMessage> messages = [];
+  int unreadCount = 0;
+  bool _chatOpen = false;
+  bool get chatOpen => _chatOpen;
 
   Future<void> join({
     required String serverUrl,
@@ -83,6 +91,18 @@ class RoomManager extends ChangeNotifier {
 
       case 'candidate':
         await _onCandidate(msg);
+        break;
+
+      case 'chat':
+        _addChatMessage(ChatMessage.fromJson(msg));
+        break;
+
+      case 'chat-history':
+        final history = (msg['messages'] as List).cast<Map<String, dynamic>>();
+        for (final m in history) {
+          messages.add(ChatMessage.fromJson(m));
+        }
+        notifyListeners();
         break;
 
       case 'disconnected':
@@ -233,6 +253,31 @@ class RoomManager extends ChangeNotifier {
     } catch (_) {
       if (!peer.ignoreOffer) rethrow;
     }
+  }
+
+  // ---------- Chat de texto ----------
+
+  void _addChatMessage(ChatMessage m) {
+    messages.add(m);
+    if (!_chatOpen && m.senderId != myId) unreadCount++;
+    notifyListeners();
+  }
+
+  /// Envia uma mensagem para a sala. O servidor devolve a mensagem para
+  /// todos (inclusive para quem enviou), então ela aparece via 'chat'.
+  void sendChat(String text) {
+    final t = text.trim();
+    if (t.isEmpty) return;
+    _signaling.send({'type': 'chat', 'text': t});
+  }
+
+  /// Chamado pela tela quando o painel de chat abre/fecha, para zerar o
+  /// contador de mensagens não lidas.
+  void setChatOpen(bool open) {
+    if (_chatOpen == open) return;
+    _chatOpen = open;
+    if (open) unreadCount = 0;
+    notifyListeners();
   }
 
   // ---------- Controle de mídia local ----------
