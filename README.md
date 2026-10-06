@@ -162,7 +162,7 @@ O **ScreenShare** ocupa a interseção perfeita: entrega **qualidade de estúdio
 
 ### Tela 2
 div align="center"
-img src="<img width="1281" height="718" alt="Image" src="https://github.com/user-attachments/assets/6f692309-2886-4706-bced-6ac72259c176" />" width="0px" /
+<img width="646" height="359" alt="Image" src="https://github.com/user-attachments/assets/6f385913-e980-44bb-9306-c50f2f8dfe1d" />
 /div
 
 ### Tela 3
