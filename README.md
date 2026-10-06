@@ -1,8 +1,8 @@
 
-# ScreanShare
+# SneakPeek
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/monitor.svg" width="72" height="72" alt="ScreenStream Logo" />
+  <img width="3508" height="3508" alt="Image" src="https://github.com/user-attachments/assets/f53f962b-c229-4bd4-b9ba-6735aaf29b37" />
 </p>
 
 <p align="center">
@@ -157,30 +157,40 @@ O **ScreenShare** ocupa a interseção perfeita: entrega **qualidade de estúdio
 
 ### Tela 1
 <div align ="center">
-img src="<img width="1276" height="718" alt="Image" src="https://github.com/user-attachments/assets/2f2a83aa-c62c-4434-a4a0-42eae9b155fd" />" width="0px" /
+<img width="1039" height="581" alt="Image" src="https://github.com/user-attachments/assets/743eadbb-a4fe-4ea9-a8ce-0e0a2f588bd9" />
 </div>
 
 ### Tela 2
-div align="center"
-img src="<img width="1281" height="718" alt="Image" src="https://github.com/user-attachments/assets/6f692309-2886-4706-bced-6ac72259c176" />" width="0px" /
-/div
+<div align="center">
+<img width="649" height="367" alt="Image" src="https://github.com/user-attachments/assets/28429c19-516a-48ce-9e2b-b1d9c936d39b" />
+</div>
 
 ### Tela 3
 <div align ="center">
-img src="<img width="1183" height="666" alt="Image" src="https://github.com/user-attachments/assets/8beefeb1-701e-4dfe-9c22-005bf47f0f2f" />" width="0px" /
+<img width="646" height="359" alt="Image" src="https://github.com/user-attachments/assets/6f385913-e980-44bb-9306-c50f2f8dfe1d" />
 </div>
 
-## Icons e fontes
+### Tela 4
+<div align ="center">
+<img width="649" height="364" alt="Image" src="https://github.com/user-attachments/assets/a627a9b6-d876-48ac-995a-72ebe6800158" />
+</div>
+
+## Icons, fontes e cores
 
 ## Icons
-div align="center"
-img src="<img width="479" height="605" alt="Image" src="https://github.com/user-attachments/assets/931b20d2-300b-4229-b034-e95564e9ded3" />" width="0px" /
-/div
+<div align="center">
+<img width="311" height="543" alt="Image" src="https://github.com/user-attachments/assets/0f83d7b9-72b2-4b17-a96d-57c00bdcc231" />
+</div>
 
 ## Fontes 
-div align="center"
-img src="<img width="556" height="422" alt="Image" src="https://github.com/user-attachments/assets/39509cf2-7b95-42d3-8e8f-0e3dfe26e609" />" width="0px" /
-/div
+<div align="center">
+<img width="486" height="360" alt="Image" src="https://github.com/user-attachments/assets/226e075d-4ffe-43f3-9109-4a7f4e8b76ee" />
+</div>
+
+## Cores 
+<div align="center">
+<img width="1289" height="772" alt="Image" src="https://github.com/user-attachments/assets/a08c8a56-3509-4489-9253-9faf5b130bbf" />
+</div>
 
 ## Links
 
