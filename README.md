@@ -1,5 +1,5 @@
 
-# ScreanShare
+# SneakPeek
 
 <p align="center">
   <img width="3508" height="3508" alt="Image" src="https://github.com/user-attachments/assets/f53f962b-c229-4bd4-b9ba-6735aaf29b37" />
