@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/room_manager.dart';
+import '../utils/app_info.dart';
 import 'loading_screen.dart';
 import 'room_screen.dart';
 
@@ -89,7 +90,7 @@ class _JoinScreenState extends State<JoinScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Compartilhamento de Tela',
+                    appName,
                     style: Theme.of(context).textTheme.headlineSmall,
                     textAlign: TextAlign.center,
                   ),

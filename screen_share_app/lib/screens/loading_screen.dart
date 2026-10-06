@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../utils/app_info.dart';
+
 /// Tela de carregamento exibida entre "Entrar na sala" e a sala em si.
 ///
 /// Executa [task] (a conexão com o servidor) enquanto mostra o GIF animado
@@ -10,7 +12,6 @@ import 'package:flutter/material.dart';
 ///  - `String` -> mensagem de erro para a tela de entrada exibir.
 class LoadingScreen extends StatefulWidget {
   final Future<void> Function() task;
-  final String appName;
   final String message;
 
   /// Tempo mínimo na tela, para a animação não "piscar" quando a conexão
@@ -20,7 +21,6 @@ class LoadingScreen extends StatefulWidget {
   const LoadingScreen({
     super.key,
     required this.task,
-    this.appName = 'Compartilhamento de Tela',
     this.message = 'Entrando na sala...',
     this.minDuration = const Duration(milliseconds: 2200),
   });
@@ -76,7 +76,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
                 ),
                 const SizedBox(height: 24),
                 Text(
-                  widget.appName,
+                  appName,
                   textAlign: TextAlign.center,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                         color: Colors.white,

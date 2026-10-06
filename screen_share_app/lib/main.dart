@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/join_screen.dart';
+import 'utils/app_info.dart';
 
 void main() {
   runApp(const ScreenShareApp());
@@ -11,7 +12,7 @@ class ScreenShareApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Compartilhamento de Tela',
+      title: appName,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         brightness: Brightness.dark,
