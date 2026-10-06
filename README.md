@@ -2,7 +2,7 @@
 # ScreanShare
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/lucide-icons/lucide/main/icons/monitor.svg" width="72" height="72" alt="ScreenStream Logo" />
+  <img width="3508" height="3508" alt="Image" src="https://github.com/user-attachments/assets/f53f962b-c229-4bd4-b9ba-6735aaf29b37" />
 </p>
 
 <p align="center">
